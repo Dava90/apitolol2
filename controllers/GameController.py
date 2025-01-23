@@ -16,7 +16,7 @@ def get_games():
     current_user = get_jwt_identity()  # Identitas pengguna yang sedang login
 
     # Ambil semua game dari database
-    games = Game.query.order_by(Game.name.asc()).all()
+    games = Game.query.order_by(func.random()).limit(10).all()
     game_list = []
     for game in games:
         game_list.append(game.to_dict())  # Asumsikan game.to_dict() mengembalikan representasi yang diinginkan
